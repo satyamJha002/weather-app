@@ -16,3 +16,9 @@ Currently, two official plugins are available:
 5. Open your browser and navigate to `http://localhost:5173`.
 
 That's it! The application should now be running locally on your machine.
+
+# Demo
+
+To see a live demo of this application, please visit the following URL:
+
+[Weather App](https://weather-app-2f321ld.netlify.app/)
