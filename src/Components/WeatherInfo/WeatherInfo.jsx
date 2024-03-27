@@ -18,16 +18,24 @@ const WeatherInfo = (props) => {
 
       const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${location}&aqi=no`;
       // Update state with fetched data
-      const response = await fetch(url, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const data = await response.json();
+      try {
+        const response = await fetch(url, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
 
-      setData(data);
-      console.log(data);
+        if (!response.ok) {
+          throw new Error(`HTTP Error! Status: ${response.status}`);
+        }
+        const data = await response.json();
+
+        setData(data);
+      } catch (err) {
+        console.log(err.message);
+        setData(null);
+      }
     };
     fetchData();
   }, [location]);
